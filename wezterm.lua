@@ -7,14 +7,6 @@ local function is_found(str, pattern)
 	return string.find(str, pattern) ~= nil
 end
 
-local function platform()
-	return {
-		is_windows = is_found(wezterm.target_triple, "windows"),
-		is_linux = is_found(wezterm.target_triple, "linux"),
-		is_mac = is_found(wezterm.target_triple, "apple"),
-	}
-end
-
 -- This table will hold the configuration.
 local config = {}
 
@@ -26,18 +18,30 @@ end
 
 -- This is where you actually apply your config choices
 
-if platform().is_mac then
-	mod.SUPER = "SUPER"
-	mod.SUPER_REV = "SUPER|CTRL"
-elseif platform().is_windows then
-	config.deault_domain = "WSL:Ubuntu-22.04"
+local os_info = {
+	win = "x86_64-pc-windows-msvc",
+	mac = "aarch64-apple-darwin",
+	linux = "x86_64-unknown-linux-gnu",
+}
+local platform = wezterm.target_triple
+if platform == os_info.win then
+	config.default_domain = "WSL:Ubuntu-22.04"
+	table.insert(launch_menu, {
+		label = "powershell",
+		args = { "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe" },
+	})
 	mod.SUPER = "ALT"
 	mod.SUPER_REV = "ALT|CTRL"
+elseif platform == os_info.mac then
+	mod.SUPER = "SUPER"
+	mod.SUPER_REV = "SUPER|CTRL"
 end
 
 config.keys = {
 	{ key = "F11", mods = "NONE", action = act.ToggleFullScreen },
-	{ key = "/", mods = mod.SUPER, action = act.Hide },
+	{ key = "h", mods = mod.SUPER, action = act.Hide },
+	{ key = "c", mods = "CTRL", action = act.CopyTo("Clipboard") },
+	{ key = "v", mods = "CTRL", action = act.PasteFrom("Clipboard") },
 }
 
 -- Changing the color scheme:
@@ -163,10 +167,26 @@ end
 
 M.set_title = function(process_name, static_title, active_title, max_width, inset)
 	local title
+	local icon
 	inset = inset or 6
-	title = "  " .. process_name .. " ~ " .. " "
-	--   󰴈    󰴈
+	--       Icon
+	if process_name:len() > 0 and static_title:len() == 0 then
+		if platform == os_info.win and not process_name:find("wsl") then
+			icon = "  "
+		elseif process_name:find("wsl") then
+			icon = "  "
+		elseif platform == os_info.mac then
+			icon = "  "
+		elseif platform == os_info.linux then
+			icon = "  "
+		end
+	elseif static_title:len() > 0 then
+		icon = "󰴈  "
+	else
+		icon = "  "
+	end
 
+	title = icon .. process_name .. " ~ " .. " "
 	if title:len() > max_width - inset then
 		local diff = title:len() - max_width + inset
 		title = wezterm.truncate_right(title, title:len() - diff)
