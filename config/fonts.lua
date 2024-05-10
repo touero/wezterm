@@ -2,7 +2,9 @@ local wezterm = require('wezterm')
 
 return {
    font = wezterm.font_with_fallback({
-      'JetBrains Mono',
+      { family = 'JetBrainsMono Nerd Font' },
+      { family = 'JetBrains Mono' },
+      { family = 'Noto Sans SC:style=Regular' },
       { family = 'Noto Sans Mono CJK SC' },
    }),
    font_size = 12,

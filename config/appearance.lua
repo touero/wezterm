@@ -5,10 +5,15 @@ return {
    max_fps = 60,
    front_end = 'WebGpu',
    webgpu_power_preference = 'HighPerformance',
+   warn_about_missing_glyphs = false,
 
    -- color scheme
    -- colors = colors,
    color_scheme = 'Gruvbox dark',
+
+   -- Set to deault rows and columns
+   initial_cols = 140,
+   initial_rows = 50,
 
    -- background
    window_background_opacity = 1.00,
@@ -57,8 +62,7 @@ return {
    integrated_title_button_style = 'Windows',
    integrated_title_button_color = 'auto',
    integrated_title_button_alignment = 'Right',
-   initial_cols = 120,
-   initial_rows = 24,
+
    window_padding = {
       left = 5,
       right = 10,
