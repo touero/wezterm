@@ -1,4 +1,5 @@
 local wezterm = require('wezterm')
+local platform = require('utils.platform')()
 
 -- Inspired by https://github.com/wez/wezterm/discussions/628#discussioncomment-1874614
 
@@ -38,14 +39,26 @@ end
 
 M.set_title = function(process_name, static_title, active_title, max_width, inset)
    local title
+   -- 󰌽 
+   local icon
    inset = inset or 6
 
+   if platform.is_win and not process_name:find('wsl') then
+      icon = '  '
+   elseif process_name:find('wsl') then
+      icon = '  '
+   elseif platform.is_mac then
+      icon = '  '
+   elseif platform.is_linux then
+      icon = '  '
+   end
+
    if process_name:len() > 0 and static_title:len() == 0 then
-      title = '  ' .. process_name .. ' ~ ' .. ' '
+      title = icon .. process_name .. ' ~ ' .. ' '
    elseif static_title:len() > 0 then
-      title = '󰴈  ' .. static_title .. ' ~ ' .. ' '
+      title = icon .. static_title .. ' ~ ' .. ' '
    else
-      title = '󰌽  ' .. active_title .. ' ~ ' .. ' '
+      title = icon .. active_title .. ' ~ ' .. ' '
    end
 
    if title:len() > max_width - inset then
