@@ -28,7 +28,7 @@ return {
          source = { File = wezterm.config_dir .. '/backdrops/bg_img2.jpg' },
       },
       {
-         source = { Color = '#282828' },
+         source = { Color = '#1A1B26' },
          height = '100%',
          width = '100%',
          opacity = 0.95,
@@ -71,8 +71,8 @@ return {
    },
    window_close_confirmation = 'AlwaysPrompt',
    window_frame = {
-      active_titlebar_bg = '#0F2536',
-      inactive_titlebar_bg = '#0F2536',
+      active_titlebar_bg = '#282828',
+      inactive_titlebar_bg = '#282828',
       -- font = fonts.font,
       -- font_size = fonts.font_size,
    },

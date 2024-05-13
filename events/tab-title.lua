@@ -7,7 +7,7 @@ local GLYPH_SEMI_CIRCLE_LEFT = ''
 -- local GLYPH_SEMI_CIRCLE_LEFT = utf8.char(0xe0b6)
 local GLYPH_SEMI_CIRCLE_RIGHT = ''
 -- local GLYPH_SEMI_CIRCLE_RIGHT = utf8.char(0xe0b4)
-local GLYPH_CIRCLE = ''
+local GLYPH_CIRCLE = ' '
 -- local GLYPH_CIRCLE = utf8.char(0xf111)
 local GLYPH_ADMIN = 'ﱾ'
 -- local GLYPH_ADMIN = utf8.char(0xfc7e)
@@ -18,17 +18,17 @@ M.cells = {}
 
 M.colors = {
    default = {
-      bg = '#8C246F',
-      fg = '#0F2536',
+      bg = '#af3a03',
+      fg = '#282828',
    },
    is_active = {
-      bg = '#248C6E',
-      fg = '#0F2536',
+      bg = '#d65d0e',
+      fg = '#282828',
    },
 
    hover = {
-      bg = '#786D22',
-      fg = '#0F2536',
+      bg = '#d65d0e',
+      fg = '#282828',
    },
 }
 
@@ -53,6 +53,7 @@ M.set_title = function(process_name, static_title, active_title, max_width, inse
       icon = '  '
    end
 
+   title = icon .. process_name .. ' ~ ' .. ' '
    if process_name:len() > 0 and static_title:len() == 0 then
       title = icon .. process_name .. ' ~ ' .. ' '
    elseif static_title:len() > 0 then
@@ -135,7 +136,7 @@ M.setup = function()
 
       -- Unseen output alert
       if has_unseen_output then
-         M.push(bg, '#FF3B8B', { Intensity = 'Bold' }, ' ' .. GLYPH_CIRCLE)
+         M.push(bg, '#79740e', { Intensity = 'Bold' }, ' ' .. GLYPH_CIRCLE)
       end
 
       -- Right padding
