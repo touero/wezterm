@@ -5,9 +5,9 @@ local M = {}
 M.separator_char = ' '
 
 M.colors = {
-   date_fg = '#b16286',
+   date_fg = '#79740e',
    date_bg = '#282828',
-   battery_fg = '#b16286',
+   battery_fg = '#79740e',
    battery_bg = '#282828',
    separator_fg = '#786D22',
    separator_bg = '#282828',
@@ -47,7 +47,7 @@ M.set_battery = function()
    local charging_icons = { '', '', '', '', '', '', '', '', '', '' }
 
    local charge = ''
-   local icon = ''
+   local icon = '🔋'
 
    for _, b in ipairs(wezterm.battery_info()) do
       local idx = math.clamp(math.round(b.state_of_charge * 10), 1, 10)
@@ -60,7 +60,7 @@ M.set_battery = function()
       end
    end
 
-   M.push(charge, icon, M.colors.battery_fg, M.colors.battery_bg, false)
+   M.push(charge, ' 🔋', M.colors.battery_fg, M.colors.battery_bg, false)
 end
 
 M.setup = function()

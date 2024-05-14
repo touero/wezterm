@@ -7,7 +7,7 @@ local GLYPH_SEMI_CIRCLE_LEFT = ''
 -- local GLYPH_SEMI_CIRCLE_LEFT = utf8.char(0xe0b6)
 local GLYPH_SEMI_CIRCLE_RIGHT = ''
 -- local GLYPH_SEMI_CIRCLE_RIGHT = utf8.char(0xe0b4)
-local GLYPH_CIRCLE = ' '
+local GLYPH_CIRCLE = '💤' -- 
 -- local GLYPH_CIRCLE = utf8.char(0xf111)
 local GLYPH_ADMIN = 'ﱾ'
 -- local GLYPH_ADMIN = utf8.char(0xfc7e)
@@ -39,18 +39,18 @@ end
 
 M.set_title = function(process_name, static_title, active_title, max_width, inset)
    local title
-   -- 󰌽 
+   -- 󰌽  
    local icon
    inset = inset or 6
 
    if platform.is_win and not process_name:find('wsl') then
       icon = '  '
    elseif process_name:find('wsl') then
-      icon = '  '
+      icon = '  '
    elseif platform.is_mac then
       icon = '  '
    elseif platform.is_linux then
-      icon = '  '
+      icon = '  '
    end
 
    title = icon .. process_name .. ' ~ ' .. ' '
