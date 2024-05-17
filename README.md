@@ -1,6 +1,7 @@
 # My WezTerm config
 
 ## preview
+![preview](./preview/mac.png) 
 ![preview](./preview/ubuntu.png) 
 
 ## Usege
