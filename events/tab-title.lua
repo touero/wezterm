@@ -46,11 +46,11 @@ M.set_title = function(process_name, static_title, active_title, max_width, inse
    if platform.is_win and not process_name:find('wsl') then
       icon = '  '
    elseif process_name:find('wsl') then
-      icon = '  '
+      icon = '  '
    elseif platform.is_mac then
       icon = '  '
    elseif platform.is_linux then
-      icon = '  '
+      icon = '  '
    end
 
    title = icon .. process_name .. ' ~ ' .. ' '
