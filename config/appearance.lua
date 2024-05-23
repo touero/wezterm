@@ -12,8 +12,8 @@ return {
    color_scheme = 'Gruvbox dark',
 
    -- Set to deault rows and columns
-   initial_cols = 140,
-   initial_rows = 50,
+   initial_cols = 170,
+   initial_rows = 40,
 
    -- background
    window_background_opacity = 1.00,
@@ -54,7 +54,7 @@ return {
    default_cursor_style = 'BlinkingBlock',
    cursor_blink_ease_in = 'Constant',
    cursor_blink_ease_out = 'Constant',
-   cursor_blink_rate = 700,
+   cursor_blink_rate = 0,
 
    -- window
    adjust_window_size_when_changing_font_size = false,
