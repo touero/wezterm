@@ -28,10 +28,10 @@ return {
          source = { File = wezterm.config_dir .. '/backdrops/bg_img2.jpg' },
       },
       {
-         source = { Color = '#1A1B26' },
+         source = { Color = '#1d2021' },
          height = '100%',
          width = '100%',
-         opacity = 0.95,
+         opacity = 0.90,
       },
    },
 
