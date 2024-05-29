@@ -1,4 +1,15 @@
 local wezterm = require('wezterm')
+local platform = require('utils.platform')()
+
+local config = {}
+if platform.is_mac then
+   config.button_style = 'MacOsNative'
+elseif platform.is_linux then
+   config.button_style = 'Gnome'
+else
+   config.buttun_style = 'Windows'
+end
+
 return {
    term = 'xterm-256color',
    animation_fps = 60,
@@ -18,14 +29,9 @@ return {
    -- background
    window_background_opacity = 1.00,
    win32_system_backdrop = 'Acrylic',
-   window_background_gradient = {
-      colors = { '#1D261B', '#261A25' },
-      -- Specifices a Linear gradient starting in the top left corner.
-      orientation = { Linear = { angle = -45.0 } },
-   },
    background = {
       {
-         source = { File = wezterm.config_dir .. '/backdrops/bg_img2.jpg' },
+         source = { File = wezterm.config_dir .. '/backdrops/bg_img5.jpg' },
       },
       {
          source = { Color = '#1d2021' },
@@ -59,9 +65,9 @@ return {
    -- window
    adjust_window_size_when_changing_font_size = false,
    window_decorations = 'INTEGRATED_BUTTONS|RESIZE',
-   integrated_title_button_style = 'Windows',
+   integrated_title_button_style = config.button_style,
    integrated_title_button_color = 'auto',
-   integrated_title_button_alignment = 'Right',
+   integrated_title_button_alignment = 'Left',
 
    window_padding = {
       left = 5,
