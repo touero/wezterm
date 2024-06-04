@@ -1,4 +1,5 @@
 local wezterm = require('wezterm')
+local colors = require('colors.custom')
 local platform = require('utils.platform')()
 
 local config = {}
@@ -19,8 +20,8 @@ return {
    warn_about_missing_glyphs = false,
 
    -- color scheme
-   -- colors = colors,
-   color_scheme = 'Gruvbox dark',
+   -- colors = colors, if you want to setting your color custom
+   color_scheme = 'Gruvbox dark, medium (base16)',
 
    -- Set to deault rows and columns
    initial_cols = 170,
@@ -31,7 +32,7 @@ return {
    win32_system_backdrop = 'Acrylic',
    background = {
       {
-         source = { File = wezterm.config_dir .. '/backdrops/bg_img5.jpg' },
+         source = { File = wezterm.config_dir .. '/backdrops/bg_img2.jpg' },
       },
       {
          source = { Color = '#1d2021' },
