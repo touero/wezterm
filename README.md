@@ -2,7 +2,7 @@
 
 ## preview
 ![preview](./preview/mac.png) 
-![preview](./preview/ubuntu.png) 
+![preview](./preview/ubuntu_preview.png) 
 
 ## Usege
 ```shell
