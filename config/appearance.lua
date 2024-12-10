@@ -5,10 +5,13 @@ local platform = require('utils.platform')()
 local config = {}
 if platform.is_mac then
    config.button_style = 'MacOsNative'
+   config.button_alignment = 'Left'
 elseif platform.is_linux then
    config.button_style = 'Gnome'
+   config.button_alignment = 'Right'
 else
    config.buttun_style = 'Windows'
+   config.button_alignment = 'Right'
 end
 
 return {
@@ -24,8 +27,8 @@ return {
    color_scheme = 'Gruvbox dark, medium (base16)',
 
    -- Set to deault rows and columns
-   initial_cols = 170,
-   initial_rows = 40,
+   initial_cols = 175,
+   initial_rows = 43,
 
    -- background
    window_background_opacity = 1.00,
@@ -64,11 +67,11 @@ return {
    cursor_blink_rate = 0,
 
    -- window
-   adjust_window_size_when_changing_font_size = false,
+   adjust_window_size_when_changing_font_size = true,
    window_decorations = 'INTEGRATED_BUTTONS|RESIZE',
    integrated_title_button_style = config.button_style,
-   integrated_title_button_color = 'auto',
-   integrated_title_button_alignment = 'Left',
+   integrated_title_button_color = '#282828',
+   integrated_title_button_alignment = config.button_alignment,
 
    window_padding = {
       left = 5,
